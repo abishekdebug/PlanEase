@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Ease - Modern Travel Planning</title>
+
+    <!-- Preconnect to required origins -->
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <!-- Share Button css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='share.css' ) }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static',filename='logo.svg') }}" />
+
+    <style>
+      /* Global Styles */
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --accent-color: #f72585;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --transition: all 0.3s ease;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9fafb;
+        color: #333;
+      }
+
+      /* Main Content Spacing */
+      main {
+        margin-top: 100px;
+        margin-bottom: 120px;
+        min-height: calc(100vh - 220px);
+      }
+
+      /* Header and Navbar Styling */
+      .navbar {
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 0.8rem 1rem;
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%) !important;
+      }
+      
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .navbar-brand img {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-link {
+        font-weight: 500;
+        transition: var(--transition);
+        margin: 0 5px;
+        border-radius: 50px;
+        padding: 8px 16px !important;
+      }
+      
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      .nav-link i {
+        margin-right: 5px;
+      }
+      
+      /* Modern Button Styling */
+      .btn {
+        transition: var(--transition);
+        font-weight: 600;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        border: none;
+      }
+      
+      .btn-success {
+        background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+        border: none;
+      }
+      
+      /* Form Styling */
+      .form-control, .form-select {
+        border: 1px solid #dde1e7;
+        padding: 10px 15px;
+        transition: var(--transition);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+      
+      .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+      }
+      
+      .form-floating > label {
+        padding: 0.5rem 1rem;
+      }
+      
+      /* Alert Styling */
+      .alert {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: opacity 1s;
+      }
+      
+      /* Footer Styling */
+      footer {
+        background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+        box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        padding: 3rem 1rem;
+        color: white;
+      }
+      
+      /* Card Styling */
+      .card {
+        transition: var(--transition);
+        overflow: hidden;
+      }
+      
+      .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      /* Journey Form Card */
+      .journey-form-card {
+        background-color: white;
+      }
+      
+      /* Icon Styling */
+      .icon-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+      
+      .icon-circle i {
+        font-size: 1.8rem;
+        color: white;
+      }
+      
+      /* Floating Button Animation */
+      .pulse {
+        animation: pulse-animation 2s infinite;
+      }
+      
+      @keyframes pulse-animation {
+        0% {
+          box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+        }
+      }
+      
+      /* Updated Floating Share Container */
+      .floating-container {
+        z-index: 100;
+      }
+      
+      .floating-button {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      }
+      
+      .float-element {
+        background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      }
+      
+      /* Spinner/Loading */
+      .spinner-container {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      /* Flash Messages */
+      .flash-messages {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        main {
+          margin-top: 150px;
+        }
+        
+        .hero-section {
+          padding: 2rem 1rem;
+        }
+        
+        .navbar-brand {
+          font-size: 1.2rem;
+        }
+        
+        .nav-item {
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <div class="bg-white">
+              <img
+              src="{{ url_for('static',filename='logo.png') }}"
+              alt="Logo"
+              width="40"
+              height="40"
+              class="d-inline-block"
+            />
+            </div>
+            Plan Ease
+          </a>
+
+          <!-- Flash Messages Container -->
+          <div class="position-absolute top-0 start-50 translate-middle-x pt-4 container text-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-messages">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                      {{ message }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+          </div>
+          
+          <!-- Mobile Toggle Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <!-- Navigation Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/"><i class="fa-solid fa-house-user"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about"><i class="fa-solid fa-info"></i> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact"><i class="fa-solid fa-at"></i> Contact</a>
+              </li>
+              
+              <!-- Authentication -->
+              <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+                {% if session.user_name %}
+                  <span class="me-3 text-light">Welcome, {{ session.user_name }}</span>
+                  <a href="/logout" class="btn btn-light rounded-pill px-3">Logout</a>
+                {% else %}
+                  <a href="/login" class="btn btn-light rounded-pill px-3 me-2">Login</a>
+                  <a href="/register" class="btn btn-success rounded-pill px-3">
+                    <i class="fa-solid fa-user-plus"></i> Sign Up
+                  </a>
+                {% endif %}
+                
+                 
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>

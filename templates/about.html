@@ -1,0 +1,100 @@
+{% extends "headers.html" %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container text-center">
+    <h1>About Plan Ease</h1>
+    <p class="mx-auto">Your personal travel planning assistant</p>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-card">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h2>Our Mission</h2>
+          <p>
+            Welcome to Plan Ease, your go-to destination for personalized travel planning and seamless itinerary creation. We understand that every journey is unique, and that's why we're dedicated to providing you with the tools and resources to make your travel experience unforgettable.
+          </p>
+          <p>
+            Our vision is to streamline and make travel accessible to budget-conscious travelers like you by making the process simple and easy to navigate. Whether it's a solo adventure, family vacation, or group travel, our platform gives you everything you need to create tailor-made itineraries that match your interests and preferences.
+          </p>
+        </div>
+        <div class="col-lg-4 text-center">
+          <img src="{{url_for('static',filename='logo.svg')}}" class="img-fluid" alt="Plan Ease Logo" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-card">
+      <h2>Technology at Work</h2>
+      <p>
+        Modern travel planning calls for fast-tracking of decision making. To help travelers in this process, Plan Ease takes a step forward by combining artificial intelligence, data analysis, and user-friendly interfaces to deliver exceptional convenience and efficiency.
+      </p>
+      <p>
+        For every step of your travel journey—from destination recommendations to real-time updates, budget management, and offline access—we ensure a seamless experience that lets you focus on creating memories rather than managing logistics.
+      </p>
+    </div>
+    
+    <div class="about-card">
+      <h2>Join Our Journey</h2>
+      <p>
+        As travel lovers ourselves at Plan Ease, we guarantee you exciting experiences and the chance to get the most out of every journey. Join us as we head out on this amazing adventure and discover new things about our world!
+      </p>
+      <p>
+        Don't let your dream destination remain just that—a dream. Get started with the Plan Ease tool now. Your dream vacation awaits!
+      </p>
+      <div class="text-center mt-4">
+        <a href="/" class="btn btn-primary rounded-pill px-5 py-2">Start Planning</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Share Button -->
+<div class="share-container">
+  <div class="share-button" id="shareButton">
+    <i class="fas fa-share-alt"></i>
+  </div>
+  <div class="share-options">
+    <!-- Facebook -->
+    <a class="share-icon facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//sanjeev02.pythonanywhere.com/" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <!-- WhatsApp -->
+    <a class="share-icon whatsapp" href="https://api.whatsapp.com/send?text=Check%20out%20this%20page:%20https://sanjeev02.pythonanywhere.com" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Twitter -->
+    <a class="share-icon twitter" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20page:%20https://sanjeev02.pythonanywhere.com" target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <!-- LinkedIn -->
+    <a class="share-icon linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//sanjeev02.pythonanywhere.com" target="_blank">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <!-- Telegram -->
+    <a class="share-icon telegram" href="https://t.me/share?url=https%3A%2F%2Fsanjeev02.pythonanywhere.com%2F&text=Check%20this%20out" target="_blank">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Plan Ease. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Share button functionality
+  document.getElementById('shareButton').addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+</script>
+
+{% endblock %}
